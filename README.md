@@ -1,4 +1,3 @@
-# Healthcare_Readmissions_Analytics
 # Healthcare Readmissions Analytics — CMS HRRP
 
 Analysis of the CMS Hospital Readmissions Reduction Program (HRRP) data examining
