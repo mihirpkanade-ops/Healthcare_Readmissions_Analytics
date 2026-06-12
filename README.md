@@ -78,14 +78,15 @@ and peer group are the dominant penalty predictors.
 All 7 models run on the same sample (n = 11,120 hospital-condition observations).
 AIC values are directly comparable across all models.
 
-| **Model**                         | **Adj R²** | **Notes**                                                         |
-| Model 1: Full Baseline            | 8.26%      | Star rating + ER + dual_prop + peer group + ownership + condition |
-| Model 2: Refined Baseline         | 8.27%      | Star rating + peer group + ownership + condition                  |
-| Model 3: + Readm Net              | 14.0%      | Adds hospital-level readmission quality composite                 |
-| Model 4: + State FE               | 11.0%      | Adds state fixed effects                                          |
-| **Model 5: Readm Net + State FE** | **15.3%**  | **Best model — lowest AIC (-26,357)**                             |
-| Model 6: Log Outcome              | 8.22%      | Log-transformed excess ratio — no improvement                     |
-| Model 7: Interaction              | 8.29%      | rating_num × peer_group — interaction not significant             |
+| Model | Adj R² | Notes |
+|---|---|---|
+| Model 1: Full Baseline | 8.26% | Star rating + ER + dual_prop + peer group + ownership + condition |
+| Model 2: Refined Baseline | 8.27% | Star rating + peer group + ownership + condition |
+| Model 3: + Readm Net | 14.0% | Adds hospital-level readmission quality composite |
+| Model 4: + State FE | 11.0% | Adds state fixed effects |
+| **Model 5: Readm Net + State FE** | **15.3%** | **Best model — lowest AIC (-26,357)** |
+| Model 6: Log Outcome | 8.22% | Log-transformed excess ratio — no improvement |
+| Model 7: Interaction | 8.29% | rating_num × peer_group — interaction not significant |
 
 ---
 
@@ -93,13 +94,14 @@ AIC values are directly comparable across all models.
 
 Model: excess_ratio ~ star rating + peer group + ownership + readm_net (per condition)
 
-| **Condition** | **Adj R²**| **n** |
-| Heart Failure | 30.3%     | 2,424 |
-| Pneumonia     | 29.2%     | 2,423 |
-| AMI           | 21.0%     | 1,722 |
-| CABG          | 10.4%     | 869   |
-| COPD          | 10.4%     | 2,229 |
-| Hip/Knee      | 6.95%     | 1,453 |
+| Condition | Adj R² | n |
+|---|---|---|
+| Heart Failure | 30.3% | 2,424 |
+| Pneumonia | 29.2% | 2,423 |
+| AMI | 21.0% | 1,722 |
+| CABG | 10.4% | 869 |
+| COPD | 10.4% | 2,229 |
+| Hip/Knee | 6.95% | 1,453 |
 
 Heart Failure and Pneumonia show the strongest structural signal. CABG and Hip/Knee
 are largely driven by surgical volume and patient selection factors not captured here.
@@ -124,8 +126,11 @@ penalty_binary ~ peer_group + ownership + dual_prop
 ## How to Run
 
 1. Open `Healthcare_Analytics.Rproj` in RStudio — sets the working directory via `here()`
-2. Install packages if needed: install.packages(c("tidyverse", "broom", "car", "here"))
-3. Run Analytics_Project_v2.R
+2. Install packages if needed:
+   ```r
+   install.packages(c("tidyverse", "broom", "car", "here"))
+   ```
+3. Run `Analytics_Project_v2.R`
 
 ---
 
@@ -147,4 +152,4 @@ Healthcare_Readmissions_Analytics/
 ## Full Portfolio
 
 Detailed methodology, visualizations, and findings:
-[Notion Portfolio](your-notion-link-here)
+**[Notion Portfolio](your-notion-link-here)**
