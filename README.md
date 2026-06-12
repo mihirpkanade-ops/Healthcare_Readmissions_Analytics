@@ -1,4 +1,4 @@
-# Healthcare Readmissions Analytics — CMS HRRP
+# Healthcare Readmissions Analytics - CMS HRRP
 
 Analysis of the CMS Hospital Readmissions Reduction Program (HRRP) data examining
 what structural hospital characteristics drive excess readmission ratios and payment
@@ -26,7 +26,7 @@ Three CMS public datasets, merged at the hospital level:
 | Hospital General Information | 5,381 | Star ratings, ownership type, quality measure counts |
 | HRRP Supplemental File | 3,048 | Payment penalties, dual-eligible proportions, peer group assignments |
 
-Source: [CMS.gov](https://data.cms.gov) — all datasets are public domain.
+Source: [CMS.gov](https://data.cms.gov) - all datasets are public domain.
 
 ---
 
@@ -41,16 +41,16 @@ Source: [CMS.gov](https://data.cms.gov) — all datasets are public domain.
 ## Key Findings
 
 **Readmission quality profile outperforms star ratings as a predictor.**
-Adding a hospital's net readmission performance score — the count of readmission
-measures rated better minus worse than the national average — to the baseline
+Adding a hospital's net readmission performance score, the count of readmission
+measures rated better minus worse than the national average to the baseline
 predictors pushes adjusted R² from 8.3% to 14.0%. This single addition accounts
 for the largest improvement across all 7 models tested, outperforming state fixed
 effects, log transformation, and interaction terms.
 
 **Structural factors explain 15.3% of variance in the best model.**
 Adding state fixed effects alongside the readmission quality composite (Model 5)
-achieves an adjusted R² of 15.3%. The remaining ~85% reflects patient-level factors —
-comorbidities, socioeconomic status, discharge support — that facility-level CMS data
+achieves an adjusted R² of 15.3%. The remaining ~85% reflects patient-level factors -
+comorbidities, socioeconomic status, discharge support that facility-level CMS data
 does not capture. This is expected and consistent with the nature of aggregate hospital
 reporting.
 
@@ -83,9 +83,9 @@ AIC values are directly comparable across all models.
 | Model 2: Refined Baseline | 8.27% | Star rating + peer group + ownership + condition |
 | Model 3: + Readm Net | 14.0% | Adds hospital-level readmission quality composite |
 | Model 4: + State FE | 11.0% | Adds state fixed effects |
-| **Model 5: Readm Net + State FE** | **15.3%** | **Best model — lowest AIC (-26,357)** |
-| Model 6: Log Outcome | 8.22% | Log-transformed excess ratio — no improvement |
-| Model 7: Interaction | 8.29% | rating_num × peer_group — interaction not significant |
+| **Model 5: Readm Net + State FE** | **15.3%** | **Best model - lowest AIC (-26,357)** |
+| Model 6: Log Outcome | 8.22% | Log-transformed excess ratio - no improvement |
+| Model 7: Interaction | 8.29% | rating_num × peer_group - interaction not significant |
 
 ---
 
@@ -118,13 +118,13 @@ penalty_binary ~ peer_group + ownership + dual_prop
   significantly higher penalty odds than Federal hospitals
 
 **Not significant:**
-- Dual proportion (p = 0.886) — peer group assignment already accounts for this
+- Dual proportion (p = 0.886) -  peer group assignment already accounts for this
 
 ---
 
 ## How to Run
 
-1. Open `Healthcare_Analytics.Rproj` in RStudio — sets the working directory via `here()`
+1. Open `Healthcare_Analytics.Rproj` in RStudio - sets the working directory via `here()`
 2. Install packages if needed:
    ```r
    install.packages(c("tidyverse", "broom", "car", "here"))
