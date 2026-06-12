@@ -59,7 +59,7 @@ Of 2,980 hospitals with valid penalty data, 2,342 received payment reductions.
 Mean penalty: 0.322%. Maximum: 3.0%.
 
 **Condition-specific models significantly outperform the pooled model.**
-Heart Failure (adj R² = 30.3%) and Pneumonia (29.2%) models explain more than twice
+Heart Failure (adj R² = 30.3%) and Pneumonia (29.2%) models explain approximately twice
 the variance of the pooled model (14.0%) using identical predictors. This points to
 condition-specific quality drivers that get masked when all six conditions are pooled
 into a single model.
