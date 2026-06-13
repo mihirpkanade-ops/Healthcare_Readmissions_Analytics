@@ -138,8 +138,8 @@ penalty_binary ~ peer_group + ownership + dual_prop
 ```
 Healthcare_Readmissions_Analytics/
 │
-├── Analytics_Project_v2.R
-├── Healthcare_Analytics.Rproj
+├── Analytics_Project.R
+├── Healthcare Analytics.Rproj
 ├── FY_2025_Hospital_Readmissions_Reduction_Program_Hospital 1.csv
 ├── Hospital_General_Information.csv
 ├── Copy_of_FY2025_Final_Rule_Supplemental_File 1.csv
