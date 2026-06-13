@@ -46,7 +46,6 @@ hrrp <- hrrp %>%
     exp_rate       = suppressWarnings(as.numeric(`Expected Readmission Rate`)),
     num_discharges = suppressWarnings(as.numeric(`Number of Discharges`)),
     state          = factor(State),
-    # Clean measure names to short labels for better plot readability
     condition = case_when(
       `Measure Name` == "READM-30-AMI-HRRP"      ~ "AMI",
       `Measure Name` == "READM-30-HF-HRRP"       ~ "Heart Failure",
@@ -66,11 +65,13 @@ gen <- gen %>%
     rating_num       = suppressWarnings(as.numeric(`Hospital overall rating`)),
     has_er           = if_else(`Emergency Services` == "Yes", 1L, 0L),
     is_rated         = if_else(!is.na(suppressWarnings(as.numeric(`Hospital overall rating`))), 1L, 0L),
+
     # Quality composite measures-how many measures better vs worse than national avg
     readm_better     = suppressWarnings(as.numeric(`Count of READM Measures Better`)),
     readm_worse      = suppressWarnings(as.numeric(`Count of READM Measures Worse`)),
     mort_worse       = suppressWarnings(as.numeric(`Count of MORT Measures Worse`)),
     safety_worse     = suppressWarnings(as.numeric(`Count of Safety Measures Worse`)),
+    
     # Simplified hospital type (3 categories instead of 6)
     hosp_type_simple = case_when(
       `Hospital Type` == "Acute Care Hospitals"    ~ "Acute Care",
@@ -78,8 +79,10 @@ gen <- gen %>%
       TRUE                                           ~ "Other"
     ) %>% factor()
   ) %>%
-  # Net readmission performance: positive = more measures better than worse
+ 
+   # Net readmission performance: positive = more measures better than worse
   mutate(readm_net = readm_better - readm_worse)
+
 
 # --- SUPP: hospital-level penalty and financial data ---
 names(supp) <- trimws(names(supp))
@@ -93,6 +96,7 @@ supp <- supp %>%
     payment_penalty       = 1 - pay_adj_factor,         # 0 = no penalty, positive = penalized
     penalty_binary        = if_else(pay_adj_factor < 1, 1L, 0L),
     penalty_pct           = suppressWarnings(as.numeric(`Payment reduction percentage`)),
+    
     # Condition-specific ERRs for hospital-level analysis
     err_ami               = suppressWarnings(as.numeric(`ERR for AMI`)),
     err_hf                = suppressWarnings(as.numeric(`ERR for HF`)),
